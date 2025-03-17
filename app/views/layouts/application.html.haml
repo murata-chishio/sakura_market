@@ -15,9 +15,9 @@
     = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
   %body
-    %header.navbar.navbar-expand-sm.navbar-light.bg-light.border-bottom.mb-4
+    %header.navbar.navbar-expand-sm.navbar-dark.bg-success.border-bottom.mb-4
       .container
-        = link_to 'さくらマーケット', root_path, class: 'navbar-brand mr-auto text-danger'
+        = link_to 'さくらマーケット', root_path, class: 'navbar-brand mr-auto'
 
   .container
     = yield
