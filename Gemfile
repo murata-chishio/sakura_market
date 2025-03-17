@@ -18,6 +18,7 @@ gem 'stimulus-rails'
 gem 'thruster', require: false
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'haml_lint', require: false
 
 # Raislガイドにバージョン指定の記述があるためバージョンを指定
 gem 'image_processing', '~> 1.2'
