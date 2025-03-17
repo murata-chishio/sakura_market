@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'haml-rails'
+gem 'html2haml'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kamal', require: false
