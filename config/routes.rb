@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
-  devise_for :admins, controllers: { sessions: 'users/sessions' }
-
+  root 'home#index'
   namespace :admins do
-    root to: 'home'
+    root 'home#index'
   end
+  devise_for :admins, controllers: { sessions: 'admins/sessions' }
 end
