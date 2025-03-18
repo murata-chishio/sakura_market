@@ -1,17 +1,17 @@
 GIT
   remote: https://github.com/SonicGarden/sgcop.git
-  revision: 5519053387d3e353f254e016fd5a6f1f3f498f3d
+  revision: 39f3fcf2ac516e2ede7fd8f3d60566c224131b47
   branch: main
   specs:
-    sgcop (1.2.2)
-      rubocop (~> 1.73.2)
+    sgcop (1.2.4)
+      rubocop (~> 1.74.0)
       rubocop-capybara (~> 2.22.0)
       rubocop-factory_bot (~> 2.27.0)
       rubocop-performance (~> 1.24.0)
       rubocop-rails (~> 2.30.0)
       rubocop-rake (~> 0.7.1)
       rubocop-rspec (~> 3.5.0)
-      rubocop-rspec_rails (~> 2.30.0)
+      rubocop-rspec_rails (~> 2.31.0)
 
 GEM
   remote: https://rubygems.org/
@@ -343,7 +343,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
-    rubocop (1.73.2)
+    rubocop (1.74.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -382,9 +382,10 @@ GEM
     rubocop-rspec (3.5.0)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
-    rubocop-rspec_rails (2.30.0)
-      rubocop (~> 1.61)
-      rubocop-rspec (~> 3, >= 3.0.1)
+    rubocop-rspec_rails (2.31.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+      rubocop-rspec (~> 3.5)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.3)
       ffi (~> 1.12)
