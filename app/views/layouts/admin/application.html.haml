@@ -17,7 +17,12 @@
   %body
     %header.navbar.navbar-expand-sm.navbar-dark.bg-success.border-bottom.mb-4
       .container
-        = link_to 'さくらマーケット', root_path, class: 'navbar-brand mr-auto'
+        = link_to 'さくらマーケット管理画面', admins_root_path, class: 'navbar-brand mr-auto'
+        %ul.navbar-nav.flex-row
+          %li.nav-item
+            - if admin_signed_in?
+              %span.text-white.me-2= current_admin.email
+              = link_to 'ログアウト', destroy_admin_session_path, data: { turbo_method: :delete, turbo_confirm: '本当にログアウトしますか?' }, class: 'btn btn-secondary'
 
   .container
     = render 'layouts/flash'

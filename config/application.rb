@@ -38,5 +38,13 @@ module SakuraMarket
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.helper false
+      g.test_framework :rspec,
+                       routing_specs: false,
+                       request_specs: false,
+                       view_specs: false
+    end
   end
 end
