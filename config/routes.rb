@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'products#index'
   namespace :admins do
     root 'homes#index'
+    resources :products
   end
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
 end
