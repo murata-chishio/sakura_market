@@ -1,5 +1,5 @@
 = simple_form_for([:admins, product]) do |f|
   = f.input :title
-  = f.input :price, label: '金額'
-  = f.input :description
-  = f.button :submit
+  = f.input :price
+  = f.input :description, input_html: { rows: 10 }
+  = f.button :submit, class: 'btn btn-success'
