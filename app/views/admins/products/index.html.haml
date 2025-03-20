@@ -1,19 +1,17 @@
-%h1 Listing admins_products
+%h1 商品一覧
 
 %table
   %thead
     %tr
-      %th
-      %th
-      %th
+      %th タイトル
+      %th 金額
 
   %tbody
-    - @admins_products.each do |admins_product|
+    - @products.each do |product|
       %tr
-        %td= link_to 'Show', admins_product
-        %td= link_to 'Edit', edit_admins_product_path(admins_product)
-        %td= link_to 'Destroy', admins_product, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to product.title, admins_product_path(product)
+        %td= number_to_currency(product.price)
 
 %br
 
-= link_to 'New Product', new_admins_product_path
+= link_to '新規登録', new_admins_product_path, class: 'btn btn-primary'

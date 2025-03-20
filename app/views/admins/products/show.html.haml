@@ -1,6 +1,8 @@
-%p#notice= notice
+%h1= @product.title
+%p= number_to_currency(@product.price)
+%p= @product.description
 
-
-= link_to 'Edit', edit_admins_product_path(@admins_product)
-\|
-= link_to 'Back', admins_products_path
+%div.d-flex.gap-2
+  = link_to '編集', edit_admins_product_path(@product), class: 'btn btn-primary'
+  = button_to '削除', admins_product_path(@product), method: :delete, data: { turbo_confirm: t('views.common.confirm.destroy') }, class: 'btn btn-danger'
+  = link_to '戻る', admins_products_path, class: 'btn btn-secondary'
