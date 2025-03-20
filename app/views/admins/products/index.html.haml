@@ -1,17 +1,9 @@
 %h1 商品一覧
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th= Product.human_attribute_name(:title)
-      %th= Product.human_attribute_name(:price)
+= link_to '新規登録', new_admins_product_path, class: 'btn btn-primary mb-3'
 
-  %tbody
-    - @products.each do |product|
-      %tr
-        %td= link_to product.title, admins_product_path(product)
-        %td= number_to_currency(product.price)
-
-= paginate @products, theme: 'bootstrap-5'
-
-= link_to '新規登録', new_admins_product_path, class: 'btn btn-primary'
+%ul.list-group
+  - @products.default_order.each do |product|
+    %li.list-group-item
+      = link_to product.title, admins_product_path(product)
+      = number_to_currency(product.price)
