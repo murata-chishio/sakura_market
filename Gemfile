@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
+gem 'bootstrap5-kaminari-views'
 gem 'bullet'
 gem 'cssbundling-rails'
 gem 'devise'
@@ -11,6 +12,7 @@ gem 'html2haml'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kamal', require: false
+gem 'kaminari'
 gem 'pg'
 gem 'propshaft'
 gem 'puma'
