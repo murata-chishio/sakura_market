@@ -19,7 +19,7 @@ class Admins::ProductsController < Admins::ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to admins_products_path(@product), notice: t('controller.created')
+      redirect_to admins_product_path(@product), notice: t('controller.created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Admins::ProductsController < Admins::ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to admins_products_path(@product), notice: t('controller.updated')
+      redirect_to admins_product_path(@product), notice: t('controller.updated')
     else
       render :edit, status: :unprocessable_entity
     end
