@@ -1,0 +1,5 @@
+ja:
+  controller:
+    created: '登録しました。'
+    updated: '更新しました。'
+    destroyed: '削除しました。'

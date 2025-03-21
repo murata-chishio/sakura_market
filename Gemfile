@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'active_storage_validations'
 gem 'bootsnap', require: false
+gem 'bootstrap5-kaminari-views'
 gem 'bullet'
 gem 'cssbundling-rails'
 gem 'devise'
@@ -11,10 +13,12 @@ gem 'html2haml'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kamal', require: false
+gem 'kaminari'
 gem 'pg'
 gem 'propshaft'
 gem 'puma'
 gem 'rails', '~> 8.0.1'
+gem 'redcarpet'
 gem 'simple_form'
 gem 'solid_cable'
 gem 'solid_cache'
