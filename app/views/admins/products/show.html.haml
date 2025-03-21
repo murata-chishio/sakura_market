@@ -1,8 +1,13 @@
-%h1= @product.title
-%p= number_to_currency(@product.price)
-%p= markdown_to_html(@product.description)
+.container
+  .row
+    .col-6
+      = product_image(@product, :preview)
+    .col-6
+      %h1= @product.title
+      %p.fs-4.text-primary.fw-bold= number_to_currency(@product.price)
+      %p= markdown_to_html(@product.description)
 
-%div.d-flex.gap-2
+%div.d-flex.gap-2.mt-3
   = link_to '編集', edit_admins_product_path(@product), class: 'btn btn-primary'
   = button_to '削除', admins_product_path(@product), method: :delete, data: { turbo_confirm: t('views.confirm.destroy') }, class: 'btn btn-danger'
   = link_to '戻る', admins_products_path, class: 'btn btn-secondary'
