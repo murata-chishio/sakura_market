@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   TAX_RATE = 1.10
   IMAGE_SETTINGS = {
     content_types: ['image/png', 'image/jpeg'],
+    max_size: 5.megabytes,
     preview_width: 500,
     preview_height: 500,
   }.freeze
@@ -14,7 +15,7 @@ class Product < ApplicationRecord
 
   validates :title, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
-  validates :image, content_type: IMAGE_SETTINGS[:content_types]
+  validates :image, content_type: IMAGE_SETTINGS[:content_types], size: { less_than: IMAGE_SETTINGS[:max_size] }
 
   scope :default_order, -> { order(updated_at: :desc, id: :desc) }
 
