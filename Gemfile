@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'bootstrap5-kaminari-views'
 gem 'bullet'
