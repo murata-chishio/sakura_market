@@ -16,7 +16,7 @@ RSpec.describe '商品の機能', type: :system do
       expect(page).to have_content '画像は許可されていないファイル形式です'
       fill_in 'タイトル', with: 'キャベツ'
       fill_in '金額(税抜)', with: '2000'
-      attach_file '画像', Rails.root.join('tomato.png')
+      attach_file '画像', Rails.root.join('spec/fixtures/files/tomato.png')
       click_button '登録する'
       expect(page).to have_content 'キャベツ'
       expect(page).to have_content '2,000'
