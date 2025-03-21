@@ -6,5 +6,6 @@ ja:
       product:
         title: 'タイトル'
         description: '説明'
-        price: '金額'
+        price: '金額(税抜)'
+        price_with_tax: '金額(税込)'
         image: '画像'

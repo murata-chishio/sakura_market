@@ -1,11 +1,17 @@
 .container
   .row
     .col-6
-      = product_image(@product, :preview)
+      = product_image(@product, image_size = :preview)
     .col-6
       %h1= @product.title
-      %p.fs-4.text-primary.fw-bold= number_to_currency(@product.price)
-      %p= markdown_to_html(@product.description)
+      %p.mb-2.ms-4
+        %strong #{Product.human_attribute_name(:price)} :
+        = number_to_currency(@product.price)
+      %p.mb-2.ms-4
+        %strong #{Product.human_attribute_name(:price_with_tax)} :
+        = number_to_currency(@product.price_with_tax)
+      .alert.alert-secondary.mt-3
+        = markdown_to_html(@product.description)
 
 %div.d-flex.gap-2.mt-3
   = link_to '編集', edit_admins_product_path(@product), class: 'btn btn-primary'
