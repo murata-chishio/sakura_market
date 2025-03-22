@@ -18,6 +18,8 @@ class Product < ApplicationRecord
   validates :image, content_type: IMAGE_SETTINGS[:content_types], size: { less_than: IMAGE_SETTINGS[:max_size] }
 
   scope :default_order, -> { order(updated_at: :desc, id: :desc) }
+  scope :default_order, -> { order(:display_order) }
+  acts_as_list scope: :product
 
   def price_with_tax
     (price * TAX_RATE).floor
