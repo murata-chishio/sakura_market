@@ -5,13 +5,13 @@
 %table.table.table-bordered
   %thead
     %tr
-      %th= Product.human_attribute_name(:title)
+      %th= Product.human_attribute_name(:name)
       %th= Product.human_attribute_name(:price)
       %th= Product.human_attribute_name(:price_with_tax)
  
   %tbody
     - @products.each do |product|
       %tr
-        %td= link_to product.title, admins_product_path(product)
+        %td= link_to product.name, admins_product_path(product)
         %td= number_to_currency(product.price)
         %td= number_to_currency(product.price_with_tax)

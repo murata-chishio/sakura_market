@@ -26,7 +26,7 @@ RSpec.describe '商品の機能', type: :system do
 
   describe '商品の一覧' do
     before do
-      create(:product, title: 'キャベツ', price: '2000')
+      create(:product, name: 'キャベツ', price: '2000')
     end
 
     it '一覧画面に商品が表示されていること' do
@@ -40,7 +40,7 @@ RSpec.describe '商品の機能', type: :system do
 
   describe '商品の詳細' do
     before do
-      create(:product, title: 'キャベツ', price: '2000', image: file_fixture('tomato.png'), description: <<~MARKDOWN)
+      create(:product, name: 'キャベツ', price: '2000', image: file_fixture('tomato.png'), description: <<~MARKDOWN)
         ### '定番！万能なキャベツ♪'
 
         **春に出回るものは「春キャベツ」と呼ばれる**
@@ -60,7 +60,7 @@ RSpec.describe '商品の機能', type: :system do
   end
 
   describe '商品の編集' do
-    let(:product) { create(:product, title: 'キャベツ') }
+    let(:product) { create(:product, name: 'キャベツ') }
 
     it '編集できること' do
       visit admins_product_path(product)
@@ -75,7 +75,7 @@ RSpec.describe '商品の機能', type: :system do
   end
 
   describe '商品の削除' do
-    let(:product) { create(:product, title: 'キャベツ') }
+    let(:product) { create(:product, name: 'キャベツ') }
 
     it '商品を削除できること' do
       visit admins_product_path(product)

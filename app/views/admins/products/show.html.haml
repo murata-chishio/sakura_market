@@ -3,7 +3,7 @@
     .col-6
       = product_image(@product, image_size = :preview)
     .col-6
-      %h1= @product.title
+      %h1= @product.name
       %p.mb-2.ms-4
         %strong #{Product.human_attribute_name(:price)} :
         = number_to_currency(@product.price)

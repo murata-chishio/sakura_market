@@ -13,7 +13,7 @@ class Product < ApplicationRecord
     attachable.variant :preview, resize_to_limit: [preview_width, preview_height]
   end
 
-  validates :title, presence: true
+  validates :name, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :image, content_type: IMAGE_SETTINGS[:content_types], size: { less_than: IMAGE_SETTINGS[:max_size] }
 

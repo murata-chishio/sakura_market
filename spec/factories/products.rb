@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
-    title { 'キャベツ' }
+    name { 'キャベツ' }
     price { 2000 }
     description { 'ブロッコリーやカリフラワーなどと同じアブラナ科の野菜であるキャベツ。' }
   end
