@@ -44,7 +44,7 @@ RSpec.describe '商品の機能', type: :system do
       expect(page.text).to match(/キャベツ[\s\S]*トマト/)
       all('tr')[1].first('td').drag_to all('tr')[2].first('td')
       expect(page.text).to match(/トマト[\s\S]*キャベツ/)
-      click on '表示順を更新'
+      visit current_path
       expect(page.text).to match(/トマト[\s\S]*キャベツ/)
     end
   end
