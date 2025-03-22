@@ -1,20 +1,23 @@
 %h1 商品一覧
 
 = link_to '新規登録', new_admins_product_path, class: 'btn btn-primary mb-3'
+= link_to '表示順を更新', admins_products_path(refresh: true), class: 'btn btn-success mb-3', data: { turbo: false }
 
 %table.table.table-bordered
   %thead
     %tr
       %th
+      %th= Product.human_attribute_name(:position)
       %th= Product.human_attribute_name(:name)
       %th= Product.human_attribute_name(:price)
       %th= Product.human_attribute_name(:price_with_tax)
  
   %tbody{ 'data-controller': 'sortable', 'data-sortable-animation-value': 150, 'data-sortable-handle-value': '.handle' }
     - @products.each do |product|
-      %tr{ 'data-sortable-update-url': admins_products_display_order_path(product) }
+      %tr{ 'data-sortable-update-url': admins_product_position_path(product) }
         %td.handle.cursor-move
           %i.bi.bi-arrows-vertical
+        %td= product.position
         %td= link_to product.name, admins_product_path(product)
         %td= number_to_currency(product.price)
         %td= number_to_currency(product.price_with_tax)

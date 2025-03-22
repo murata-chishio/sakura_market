@@ -9,3 +9,4 @@ ja:
         price: '金額(税抜)'
         price_with_tax: '金額(税込)'
         image: '画像'
+        position: '表示順'
