@@ -27,6 +27,7 @@ RSpec.describe '商品の機能', type: :system do
   describe '商品の一覧' do
     before do
       create(:product, name: 'キャベツ', price: '2000')
+      create(:product, name: 'トマト', price: '4000')
     end
 
     it '一覧画面に商品が表示されていること' do
@@ -35,6 +36,16 @@ RSpec.describe '商品の機能', type: :system do
       expect(page).to have_content '2,000'
       # 税込の金額
       expect(page).to have_content '2,200'
+      expect(page).to have_content 'トマト'
+    end
+
+    it '表示順を変更できること' do
+      visit admins_products_path
+      expect(page.text).to match(/キャベツ[\s\S]*トマト/)
+      all('tr')[1].first('td').drag_to all('tr')[2].first('td')
+      expect(page.text).to match(/トマト[\s\S]*キャベツ/)
+      visit current_path
+      expect(page.text).to match(/トマト[\s\S]*キャベツ/)
     end
   end
 
@@ -55,7 +66,7 @@ RSpec.describe '商品の機能', type: :system do
       expect(page).to have_content '金額(税込) : 2,200'
       expect(page).to have_selector("img[src$='tomato.png']")
       expect(page).to have_selector 'h3', text: '定番！万能なキャベツ♪'
-      expect(page).to have_selector 'strong', text: '春に出回るものは「春キャベツ」と呼ばれる'
+      expect(page).to have_selector 'stdong', text: '春に出回るものは「春キャベツ」と呼ばれる'
     end
   end
 
