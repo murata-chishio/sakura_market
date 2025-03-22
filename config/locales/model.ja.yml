@@ -13,4 +13,6 @@ ja:
         position: '表示順'
       user:
         email: 'メールアドレス'
+      admin:
+        email: 'メールアドレス'
 

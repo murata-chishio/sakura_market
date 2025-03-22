@@ -18,7 +18,7 @@ RSpec.describe 'ユーザーのログイン機能', type: :system do
   context 'ログアウトしているとき' do
     it 'ログインの確認' do
       visit new_user_session_path
-      fill_in 'Eメール', with: 'user@example.com'
+      fill_in 'メールアドレス', with: 'user@example.com'
       fill_in 'パスワード', with: 'password123#'
       click_button 'ログイン'
       expect(page).to have_content 'ログインしました。'

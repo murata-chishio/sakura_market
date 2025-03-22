@@ -18,7 +18,7 @@ RSpec.describe '管理者のログイン機能', type: :system do
   context 'ログアウトしているとき' do
     it 'ログインの確認' do
       visit new_admin_session_path
-      fill_in 'Eメール', with: 'admin@example.com'
+      fill_in 'メールアドレス', with: 'admin@example.com'
       fill_in 'パスワード', with: 'password123#'
       click_button 'ログイン'
       expect(page).to have_content 'ログインしました。'
