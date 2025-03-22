@@ -2,3 +2,6 @@ ja:
   views:
     confirm:
       destroy: '本当に削除しますか？'
+  simple_form:
+    error_notification:
+      default_message: "以下の問題を確認してください"

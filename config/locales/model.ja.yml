@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       product: '商品'
+      user: 'ユーザー'
     attributes:
       product:
         name: '商品名'
@@ -10,3 +11,6 @@ ja:
         price_with_tax: '金額(税込)'
         image: '画像'
         position: '表示順'
+      user:
+        email: 'メールアドレス'
+

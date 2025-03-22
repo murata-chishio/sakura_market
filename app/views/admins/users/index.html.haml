@@ -1,2 +1,17 @@
-%h1 Admins::Users#index
-%p Find me in app/views/admins/users/index.html.haml
+%h1 ユーザー一覧
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:updated_at)
+      %th
+      %th
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= l(user.updated_at, format: :long)
+        %td.text-center= link_to '編集', edit_admins_user_path(user), class: 'btn btn-primary btn-sm'
+        %td.text-center= button_to '削除', admins_user_path(user), method: :delete, data: { turbo_confirm: t('views.confirm.destroy') }, class: 'btn btn-danger btn-sm'
