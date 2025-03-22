@@ -10,10 +10,10 @@
       %th= Product.human_attribute_name(:price)
       %th= Product.human_attribute_name(:price_with_tax)
  
-  %tbody{ 'data-controller': 'sortable', 'data-sortable-animation-value': 150 }
+  %tbody{ 'data-controller': 'sortable', 'data-sortable-animation-value': 150, 'data-sortable-handle-value': '.handle' }
     - @products.each do |product|
       %tr{ 'data-sortable-update-url': admins_products_display_order_path(product) }
-        %td.cursor-move
+        %td.handle.cursor-move
           %i.bi.bi-arrows-vertical
         %td= link_to product.name, admins_product_path(product)
         %td= number_to_currency(product.price)
