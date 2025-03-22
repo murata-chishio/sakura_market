@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
   root 'products#index'
   namespace :admins do
+    resources :users
     root 'homes#index'
     resources :products do
       resource :position, only: :update, module: :products
