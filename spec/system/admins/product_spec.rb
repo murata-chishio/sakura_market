@@ -11,10 +11,10 @@ RSpec.describe '商品の機能', type: :system do
       click_link '新規登録'
       attach_file '画像', Rails.root.join('spec/fixtures/files/radish.pdf')
       click_button '登録する'
-      expect(page).to have_content('タイトルを入力してください')
+      expect(page).to have_content('商品名を入力してください')
       expect(page).to have_content '金額(税抜)は数値で入力してください'
       expect(page).to have_content '画像は許可されていないファイル形式です'
-      fill_in 'タイトル', with: 'キャベツ'
+      fill_in '商品名', with: 'キャベツ'
       fill_in '金額(税抜)', with: '2000'
       attach_file '画像', Rails.root.join('spec/fixtures/files/tomato.png')
       click_button '登録する'
@@ -67,7 +67,7 @@ RSpec.describe '商品の機能', type: :system do
       expect(page).to have_content 'キャベツ'
       click_on '編集'
 
-      fill_in 'タイトル',	with: 'トマト'
+      fill_in '商品名',	with: 'トマト'
       click_on '更新する'
 
       expect(page).to have_content 'トマト'
