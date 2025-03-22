@@ -1,7 +1,7 @@
 .container
   .row
     .col-6
-      = product_image(@product, image_size = :preview)
+      = product_image(@product, :preview)
     .col-6
       %h1= @product.name
       %p.mb-2.ms-4
@@ -13,7 +13,7 @@
       .alert.alert-secondary.mt-3
         = markdown_to_html(@product.description)
 
-%div.d-flex.gap-2.mt-3
+.d-flex.gap-2.mt-3
   = link_to '編集', edit_admins_product_path(@product), class: 'btn btn-primary'
   = button_to '削除', admins_product_path(@product), method: :delete, data: { turbo_confirm: t('views.confirm.destroy') }, class: 'btn btn-danger'
   = link_to '戻る', admins_products_path, class: 'btn btn-secondary'

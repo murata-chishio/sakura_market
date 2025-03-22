@@ -11,7 +11,7 @@
       %th= Product.human_attribute_name(:name)
       %th= Product.human_attribute_name(:price)
       %th= Product.human_attribute_name(:price_with_tax)
- 
+
   %tbody{ 'data-controller': 'sortable', 'data-sortable-animation-value': 150, 'data-sortable-handle-value': '.handle' }
     - @products.each do |product|
       %tr{ 'data-sortable-update-url': admins_product_position_path(product) }
