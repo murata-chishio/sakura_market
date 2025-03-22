@@ -18,6 +18,14 @@
     %header.navbar.navbar-expand-sm.navbar-dark.bg-success.border-bottom.mb-4
       .container
         = link_to 'さくらマーケット', root_path, class: 'navbar-brand mr-auto'
+        %ul.navbar-nav.flex-row
+          %li.nav-item
+            - if user_signed_in?
+              %span.text-white.me-2= current_user.email
+              = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: '本当にログアウトしますか?' }, class: 'btn btn-secondary'
+            - else
+              = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary '
+              = link_to '新規登録', new_user_registration_path, class: 'btn btn-secondary'
 
   .container
     = render 'layouts/flash'

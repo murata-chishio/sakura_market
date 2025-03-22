@@ -1,13 +1,13 @@
-RSpec.describe '管理者のログイン機能', type: :system do
-  let!(:admin) { create(:admin, email: 'admin@example.com', password: 'password123#') }
+RSpec.describe 'ユーザーのログイン機能', type: :system do
+  let!(:user) { create(:user, email: 'user@example.com', password: 'password123#') }
 
   context 'ログインしているとき' do
     before do
-      sign_in(admin, scope: :admin)
+      sign_in(user, scope: :user)
     end
 
     it 'ログアウトの確認' do
-      visit admins_root_path
+      visit root_path
       accept_confirm('本当にログアウトしますか?') do
         click_on 'ログアウト'
       end
@@ -17,17 +17,12 @@ RSpec.describe '管理者のログイン機能', type: :system do
 
   context 'ログアウトしているとき' do
     it 'ログインの確認' do
-      visit new_admin_session_path
-      fill_in 'メールアドレス', with: 'admin@example.com'
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: 'user@example.com'
       fill_in 'パスワード', with: 'password123#'
       click_button 'ログイン'
       expect(page).to have_content 'ログインしました。'
-      expect(page).to have_current_path admins_root_path
-    end
-
-    it '管理者ページにアクセス不可' do
-      visit admins_root_path
-      expect(page).to have_current_path new_admin_session_path
+      expect(page).to have_content 'user@example.com'
     end
   end
 end
