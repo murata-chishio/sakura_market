@@ -5,7 +5,6 @@ gem 'acts_as_list'
 gem 'bootsnap', require: false
 gem 'bootstrap5-kaminari-views'
 gem 'bullet'
-gem 'business_time'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-i18n'
