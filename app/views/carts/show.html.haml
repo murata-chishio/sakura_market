@@ -2,18 +2,38 @@
   %h1.mb-4 カート内商品一覧
 
   - if @cart.cart_items.present?
-    - @cart.cart_items.eager_load(product: :image_attachment).default_order.each do |cart_product|
-      .card.mb-3
-        .row
-          .col-md-4
-            = product_image(cart_product.product, :thumbnail, class_options: 'card-img-top')
-          .col-md-8
-            .card-body.d-flex.flex-column.justify-content-center.h-100
-              %p.fs-2.card-name #{cart_product.product.name} x #{cart_product.quantity}
-              %p.card-text.fs-3
-                %strong #{Product.human_attribute_name(:price_with_tax)} :
-                = number_to_currency(cart_product.product.price_with_tax * cart_product.quantity)
-              = button_to '削除', cart_item_path(cart_product), method: :delete, class: 'btn btn-danger', data: { turbo_confirm: 'カートから削除しますか？' }
+    .row
+      .col-9
+        - @cart.cart_items.eager_load(product: :image_attachment).default_order.each do |cart_product|
+          .card.mb-3
+            .row
+              .col-4
+                = product_image(cart_product.product, :thumbnail, class_options: 'card-img-top')
+              .col-8
+                .card-body.d-flex.flex-column.justify-content-center.h-100
+                  %p.fs-2.card-name #{cart_product.product.name} x #{cart_product.quantity}
+                  %p.card-text.fs-3
+                    %strong #{Product.human_attribute_name(:price_with_tax)} :
+                    = number_to_currency(cart_product.product.price_with_tax * cart_product.quantity)
+                  = button_to '削除', cart_item_path(cart_product), method: :delete, class: 'btn btn-danger', data: { turbo_confirm: 'カートから削除しますか？' }
+      .col-3
+        %table.table.table-bordered.table-hover
+          %tbody
+            %tr
+              %th.table-light 商品の合計金額
+              %td.text-end= number_to_currency(@cart.subtotal_price)
+            %tr
+              %th.table-light 代引き手数料
+              %td.text-end= number_to_currency(@cart.delivery_fee)
+            %tr
+              %th.table-light 送料
+              %td.text-end= number_to_currency(@cart.shipping_fee)
+            %tr
+              %th.table-light 税
+              %td.text-end= number_to_currency(@cart.tax_amount)
+            %tr
+              %th.table-primary 支払いの合計
+              %td.table-primary.text-end.fw-bold= number_to_currency(@cart.payment_total)
 
   - else
     .alert.alert-info
