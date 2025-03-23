@@ -3,3 +3,7 @@ ja:
     created: '登録しました。'
     updated: '更新しました。'
     destroyed: '削除しました。'
+  carts:
+    cart_items:
+      created: 'カートに追加しました。'
+      deleted: '商品を削除しました。'

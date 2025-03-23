@@ -3,13 +3,10 @@ class CartItemsController < ApplicationController
 
   def create
     cart_item = current_cart.cart_items.find_or_initialize_by(product: @product)
-    cart_item.quantity += 1
+    cart_item.quantity += params[:quantity].to_i
 
-    if cart_item.save
-      redirect_to @product, notice: t('carts.cart_items.created')
-    else
-      redirect_to @product, alert: t('carts.cart_items.create_failed')
-    end
+    cart_item.save
+    redirect_to @product, notice: t('carts.cart_items.created')
   end
 
   def destroy
