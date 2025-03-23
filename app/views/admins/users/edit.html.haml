@@ -2,8 +2,14 @@
 = simple_form_for([:admins, @user], url: admins_user_path(@user)) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :name, required: true
     = f.input :email, required: true
     = f.input :password, required: true, input_html: { autocomplete: 'new-password' }
     = f.input :password_confirmation, required: true, input_html: { autocomplete: 'new-password' }
+    = f.input :postcode, required: true
+    = f.input :prefecture, required: true
+    = f.input :address_city, required: true
+    = f.input :address_street, required: true
+    = f.input :address_building, required: true
   .form-actions
     = f.button :submit, class: 'btn btn-primary'

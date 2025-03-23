@@ -2,6 +2,9 @@
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :name,
+              required: true,
+              input_html: { autocomplete: 'name' }
     = f.input :email,
               required: true,
               input_html: { autocomplete: 'email' }
@@ -12,6 +15,22 @@
     = f.input :password_confirmation,
               required: true,
               input_html: { autocomplete: 'new-password' }
+    = f.input :postcode,
+              required: true,
+              input_html: { autocomplete: 'postcode' }
+    = f.input :prefecture,
+              required: true,
+              input_html: { autocomplete: 'prefecture' }
+    = f.input :address_city,
+              required: true,
+              input_html: { autocomplete: 'address_city' }
+    = f.input :address_street,
+              required: true,
+              input_html: { autocomplete: 'address_street' }
+    = f.input :address_building,
+              required: true,
+              input_html: { autocomplete: 'address_building' }
+  
   .form-actions
     = f.button :submit, '新規登録', class: 'btn btn-primary'
 = render 'users/shared/links'
