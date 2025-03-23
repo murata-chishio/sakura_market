@@ -40,11 +40,13 @@ RSpec.describe '商品の機能', type: :system do
     end
 
     it '表示順を変更できること' do
-      visit admins_products_path
+      visit products_path
       expect(page.text).to match(/キャベツ[\s\S]*トマト/)
+      visit admins_products_path
       all('tr')[1].first('td').drag_to all('tr')[2].first('td')
-      expect(page.text).to match(/トマト[\s\S]*キャベツ/)
       visit current_path
+      expect(page.text).to match(/トマト[\s\S]*キャベツ/)
+      visit products_path
       expect(page.text).to match(/トマト[\s\S]*キャベツ/)
     end
   end

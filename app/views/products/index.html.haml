@@ -1,2 +1,13 @@
--#  あとで商品の一覧を実装する
-%h1 さくらマーケットトップページ
+.row
+  - @products.each do |product|
+    .col-4.mb-4
+      = link_to product_path(product), class: 'text-decoration-none' do
+        .card.h-100
+          = product_image(product, image_size = :thumbnail, class_options: 'card-img-top')
+          .card-body.d-flex.flex-column.justify-content-end
+            %h2.card-title= product.name
+            %p.card-text
+              %strong #{Product.human_attribute_name(:price_with_tax)} :
+              = number_to_currency(product.price_with_tax)
+
+= paginate @products, theme: 'bootstrap-5'
