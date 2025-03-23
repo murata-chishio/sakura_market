@@ -1,5 +1,12 @@
 RSpec.describe 'カートの機能', type: :system do
-  let!(:user) { create(:user) }
+  let!(:user) do
+    create(:user,
+           name: '佐藤 太郎',
+           postcode: '1008111',
+           prefecture: '東京都',
+           address_city: '千代田区',
+           address_street: '千代田１−１')
+  end
 
   before do
     sign_in(user, scope: :user)
@@ -14,7 +21,7 @@ RSpec.describe 'カートの機能', type: :system do
 
     it '商品をカートに入れることができる' do
       visit product_path(product)
-      fill_in '個数', with: '3'
+      fill_in '個数', with: '2'
       click_button 'カートに追加'
       expect(page).to have_content 'カートに追加しました。'
       visit cart_path
@@ -32,7 +39,13 @@ RSpec.describe 'カートの機能', type: :system do
       create(:cart_item, cart: cart, product: product, quantity: 2)
     end
 
-    it '本を削除できる' do
+    it '住所が表示されている' do
+      visit cart_path
+      expect(page).to have_content '佐藤 太郎'
+      expect(page).to have_content '1008111 東京都 千代田区 千代田１−１'
+    end
+
+    it '商品を削除できる' do
       visit root_path
       click_link 'カート'
 
@@ -42,6 +55,14 @@ RSpec.describe 'カートの機能', type: :system do
         click_button '削除'
       end
       expect(page).to have_content 'カートに商品が入っていません'
+    end
+
+    it '本を購入できる' do
+      visit cart_path
+      expect(page).to have_content 'キャベツ'
+      expect(page).to have_content '4,400'
+      click_button '購入'
+      expect(page).to have_content '購入しました。'
     end
   end
 end

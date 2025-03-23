@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resource :cart, only: %i[show]
   resources :cart_items, only: %i[create destroy]
 
+  namespace :users do
+    resources :orders, only: %i[create]
+  end
+
   namespace :admins do
     resources :users, only: %i[index edit update destroy]
     root 'homes#index'

@@ -7,3 +7,6 @@ ja:
     cart_items:
       created: 'カートに追加しました。'
       deleted: '商品を削除しました。'
+  orders:
+    order_items:
+      created: '商品を購入しました。'

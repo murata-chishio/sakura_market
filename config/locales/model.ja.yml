@@ -21,4 +21,9 @@ ja:
         address_building: '建物名'
       admin:
         email: 'メールアドレス'
-
+      cart:
+        subtotal_price: '表品の合計金額（税抜）'
+        delivery_fee: '代引き手数料'
+        shipping_fee: '送料'
+        tax_amount: '税'
+        payment_total: '支払いの合計'
