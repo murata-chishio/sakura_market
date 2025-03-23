@@ -44,11 +44,14 @@
             %tr
               %th.table-primary= Cart.human_attribute_name(:payment_total)
               %td.table-primary.text-end.fw-bold= number_to_currency(@cart.payment_total)
-
+        
         - if current_user.name.blank? || current_user.full_address.blank?
           %p 購入するには、名前と住所を登録する必要があります
         - else
-          = button_to '購入', users_orders_path, method: :post, class: 'btn btn-primary'
+          = form_with(url: users_orders_path, local: true) do |f|
+            = f.date_field :delivery_date, min: @min_delivery_date, max: @max_delivery_date
+            = f.select :delivery_time, ['8-12', '12-14', '14-16', '16-18', '18-20', '20-21']
+            = f.submit '購入する', class: 'btn btn-primary'
 
   - else
     .alert.alert-info
