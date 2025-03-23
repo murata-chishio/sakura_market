@@ -3,7 +3,7 @@
     .col-4.mb-4
       = link_to product_path(product), class: 'text-decoration-none' do
         .card.h-100
-          = product_image(product, image_size = :thumbnail, class_options: 'card-img-top')
+          = product_image(product, :thumbnail, class_options: 'card-img-top')
           .card-body.d-flex.flex-column.justify-content-end
             %h2.card-title= product.name
             %p.card-text
