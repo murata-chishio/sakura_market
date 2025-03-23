@@ -6,7 +6,7 @@
       .card.mb-3
         .row
           .col-md-4
-            = product_image(cart_product.product, image_size = :thumbnail, class_options: 'card-img-top')
+            = product_image(cart_product.product, :thumbnail, class_options: 'card-img-top')
           .col-md-8
             .card-body.d-flex.flex-column.justify-content-center.h-100
               %p.fs-2.card-name #{cart_product.product.name} x #{cart_product.quantity}
