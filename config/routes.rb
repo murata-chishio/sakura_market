@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
   root 'products#index'
-  resources 'products#index'
+  resources :products
   namespace :admins do
     resources :users, only: %i[index edit update destroy]
     root 'homes#index'

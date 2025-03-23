@@ -5,12 +5,18 @@ class Product < ApplicationRecord
     max_size: 5.megabytes,
     preview_width: 500,
     preview_height: 500,
+    thumbnail_width: 200,
+    thumbnail_height: 300,
   }.freeze
 
   has_one_attached :image do |attachable|
     preview_width = IMAGE_SETTINGS[:preview_width]
     preview_height = IMAGE_SETTINGS[:preview_height]
     attachable.variant :preview, resize_to_limit: [preview_width, preview_height]
+
+    thumbnail_width = IMAGE_SETTINGS[:thumbnail_width]
+    thumbnail_height = IMAGE_SETTINGS[:thumbnail_height]
+    attachable.variant :thumbnail, resize_to_limit: [thumbnail_width, thumbnail_height]
   end
 
   validates :name, presence: true
