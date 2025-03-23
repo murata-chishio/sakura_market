@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
+
   root 'products#index'
   resources :products
+  resource :cart, only: %i[show]
+  resources :cart_books, only: %i[create destroy]
+
   namespace :admins do
     resources :users, only: %i[index edit update destroy]
     root 'homes#index'
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
       resource :position, only: :update, module: :products
     end
   end
+
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   devise_for :users
 end
