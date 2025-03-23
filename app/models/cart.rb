@@ -8,7 +8,7 @@ class Cart < ApplicationRecord
   has_many :products, through: :cart_items
 
   def subtotal_price
-    cart_items.sum { |item| item.product.price * item.quantity }
+    cart_items.includes(:product).sum { |item| item.product.price * item.quantity }
   end
 
   def delivery_fee
