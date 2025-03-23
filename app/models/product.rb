@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  TAX_RATE = 1.10
+  TAX_RATE = 0.1
   IMAGE_SETTINGS = {
     content_types: ['image/png', 'image/jpeg'],
     max_size: 5.megabytes,
@@ -28,6 +28,6 @@ class Product < ApplicationRecord
   acts_as_list
 
   def price_with_tax
-    (price * TAX_RATE).floor
+    (price * (1 + TAX_RATE)).floor
   end
 end
