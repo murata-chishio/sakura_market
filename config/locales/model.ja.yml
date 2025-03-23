@@ -13,6 +13,12 @@ ja:
         position: '表示順'
       user:
         email: 'メールアドレス'
+        name: '名前'
+        postcode: '郵便番号'
+        prefecture: '都道府県'
+        address_city: '市区町村'
+        address_street: '番地'
+        address_building: '建物名'
       admin:
         email: 'メールアドレス'
 
