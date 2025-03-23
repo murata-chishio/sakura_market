@@ -21,7 +21,7 @@ class Cart < ApplicationRecord
   end
 
   def shipping_fee
-    shipping_units = (cart_items.sum(:quantity) / 5)
+    shipping_units = (cart_items.sum(:quantity).to_f / 5).ceil
     shipping_units * BASE_SHIPPING_FEE
   end
 
