@@ -29,7 +29,7 @@ RSpec.describe 'カートの機能', type: :system do
                        name: 'キャベツ',
                        price: 2000)
       cart = create(:cart, user: user)
-      create(:cart_item, cart: cart, product: product)
+      create(:cart_item, cart: cart, product: product, quantity: 2)
     end
 
     it '本を削除できる' do
@@ -37,7 +37,7 @@ RSpec.describe 'カートの機能', type: :system do
       click_link 'カート'
 
       expect(page).to have_content 'キャベツ'
-      expect(page).to have_content '2,200'
+      expect(page).to have_content '4,400'
       accept_alert('カートから削除しますか？') do
         click_button '削除'
       end
