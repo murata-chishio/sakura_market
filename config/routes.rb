@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products
   resource :cart, only: %i[show]
-  resources :cart_books, only: %i[create destroy]
+  resources :cart_items, only: %i[create destroy]
 
   namespace :admins do
     resources :users, only: %i[index edit update destroy]
