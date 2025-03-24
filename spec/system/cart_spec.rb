@@ -12,7 +12,7 @@ RSpec.describe 'カートの機能', type: :system do
     sign_in(user, scope: :user)
   end
 
-  describe 'カートへの本の追加' do
+  describe 'カートへの商品の追加' do
     let(:product) { create(:product, name: 'キャベツ', price: 2000) }
 
     before do
@@ -57,7 +57,7 @@ RSpec.describe 'カートの機能', type: :system do
       expect(page).to have_content 'カートに商品が入っていません'
     end
 
-    it '本を購入できる' do
+    it '商品を購入できる' do
       visit cart_path
       expect(page).to have_content 'キャベツ'
       expect(page).to have_content '4,400'
