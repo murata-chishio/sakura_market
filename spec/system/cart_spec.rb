@@ -62,7 +62,7 @@ RSpec.describe 'カートの機能', type: :system do
       expect(page).to have_content 'キャベツ'
       expect(page).to have_content '4,400'
       fill_in '配送日', with: Order.calculate_business_days(3)
-      select '8-12', from: '配送時間'
+      select '8-12', from: '配送時刻'
       click_button '購入'
       expect(page).to have_content '購入しました。'
     end
