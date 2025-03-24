@@ -20,7 +20,8 @@ RSpec.describe '購入履歴', type: :system do
                     user:,
                     created_at: '2025-03-25 12:00',
                     delivery_date: Order.calculate_business_days(5),
-                    delivery_time: '8-12')
+                    delivery_time: '8-12',
+                    total_amount: '10000`')
     end
 
     it '一覧に情報が表示されている' do
@@ -29,22 +30,26 @@ RSpec.describe '購入履歴', type: :system do
       expect(page).to have_content 'user@example.com'
       expect(page).to have_content Order.calculate_business_days(5).strftime("%Y年%m月%d日")
       expect(page).to have_content '8-12'
+      expect(page).to have_content '10,000'
     end
   end
 
   describe '履歴の詳細' do
     before do
       product = create(:product, name: 'キャベツ', price: 2000)
-      order = create(:order, user:, delivery_date: Order.calculate_business_days(5), delivery_time: '8-12')
+      order = create(:order, user:, delivery_date: Order.calculate_business_days(5), delivery_time: '8-12', total_amount: '10000')
       create(:order_item, order:, product:, quantity: 15)
     end
 
     it '詳細に情報が表示されている' do
       visit users_orders_path
       click_link '佐藤 太郎'
+      expect(page).to have_content '佐藤 太郎'
+      expect(page).to have_content 'user@example.com'
       expect(page).to have_content '1008111 東京都 千代田区 千代田１−１'
       expect(page).to have_content 'キャベツ'
       expect(page).to have_content '15'
+      expect(page).to have_content '10,000'
     end
   end
 end
