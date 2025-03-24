@@ -10,6 +10,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'haml_lint', require: false
 gem 'haml-rails'
+gem 'holiday_jp'
 gem 'html2haml'
 gem 'jbuilder'
 gem 'jsbundling-rails'
