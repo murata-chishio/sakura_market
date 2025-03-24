@@ -8,11 +8,14 @@
       %dt= Order.human_attribute_name(:email)
       %dd= @order.user.email
 
-      %dt= Order.human_attribute_name(:name)
+      %dt= User.human_attribute_name(:name)
       %dd= @order.user.name
 
       %dt= Order.human_attribute_name(:created_at)
       %dd= l(@order.created_at, format: :long)
+
+      %dt= User.human_attribute_name(:full_address)
+      %dd= @order.user.full_address
 
   .col-9
     %h2 購入した商品

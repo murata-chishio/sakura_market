@@ -19,6 +19,7 @@ ja:
         address_city: '市区町村'
         address_street: '番地'
         address_building: '建物名'
+        full_address: '住所'
       admin:
         email: 'メールアドレス'
       cart:
