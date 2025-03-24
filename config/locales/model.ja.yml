@@ -19,6 +19,7 @@ ja:
         address_city: '市区町村'
         address_street: '番地'
         address_building: '建物名'
+        full_address: '住所'
       admin:
         email: 'メールアドレス'
       cart:
@@ -28,5 +29,8 @@ ja:
         tax_amount: '税'
         payment_total: '支払いの合計'
       order:
+        created_at: '購入日時'
         delivery_date: '配送日'
-        delivery_time: '配送時間'
+        delivery_time: '配送時刻'
+      order_item:
+        quantity: '個数'

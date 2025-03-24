@@ -16,7 +16,7 @@
                     %strong #{Product.human_attribute_name(:price_with_tax)} :
                     = number_to_currency(cart_product.product.price_with_tax * cart_product.quantity)
                   = button_to '削除', cart_item_path(cart_product), method: :delete, class: 'btn btn-danger', data: { turbo_confirm: 'カートから削除しますか？' }
-      
+
       .col-3
         .alert.alert-info.shadow-sm.rounded
           .d-flex.align-items-center
@@ -44,7 +44,7 @@
             %tr
               %th.table-primary= Cart.human_attribute_name(:payment_total)
               %td.table-primary.text-end.fw-bold= number_to_currency(@cart.payment_total)
-        
+
         - if current_user.name.blank? || current_user.full_address.blank?
           %p 購入するには、名前と住所を登録する必要があります
         - else
@@ -53,8 +53,8 @@
               = f.label :delivery_date, '配送日'
               = f.date_field :delivery_date, min: @min_delivery_date, max: @max_delivery_date
             .form-group
-              = f.label :delivery_time, '配送時間'
-              = f.select :delivery_time, ['8-12', '12-14', '14-16', '16-18', '18-20', '20-21']
+              = f.label :delivery_time, '配送時刻'
+              = f.select :delivery_time, %w[8-12 12-14 14-16 16-18 18-20 20-21]
             = f.submit '購入する', class: 'btn btn-primary'
 
   - else

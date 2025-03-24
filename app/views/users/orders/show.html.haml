@@ -1,0 +1,37 @@
+.row
+  .col-3
+    %h1.mb-4 購入詳細
+    %dl
+      %dt= Order.human_attribute_name(:id)
+      %dd= @order.id
+
+      %dt= Order.human_attribute_name(:email)
+      %dd= @order.user.email
+
+      %dt= User.human_attribute_name(:name)
+      %dd= @order.user.name
+
+      %dt= Order.human_attribute_name(:created_at)
+      %dd= l(@order.created_at, format: :long)
+
+      %dt= User.human_attribute_name(:full_address)
+      %dd= @order.user.full_address
+
+  .col-9
+    %h2 購入した商品
+    %table.table
+      %thead
+        %tr
+          %th= Product.human_attribute_name(:name)
+          %th= OrderItem.human_attribute_name(:quantity)
+      %tbody
+        - @order.order_items.default_order.preload(:product).find_each do |order_item|
+          %tr
+            %td= order_item.product.name
+            %td= order_item.quantity
+
+    .mt-3.text-end
+      %strong 合計金額:
+      = number_to_currency(@order.total_amount)
+
+= link_to '戻る', users_orders_path, class: 'btn btn-secondary mt-3'
