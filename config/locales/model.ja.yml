@@ -28,5 +28,6 @@ ja:
         tax_amount: '税'
         payment_total: '支払いの合計'
       order:
+        created_at: '購入日時'
         delivery_date: '配送日'
-        delivery_time: '配送時間'
+        delivery_time: '配送時刻'

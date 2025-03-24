@@ -7,6 +7,8 @@
       %th= User.human_attribute_name(:name)
       %th= User.human_attribute_name(:email)
       %th= Order.human_attribute_name(:created_at)
+      %th= Order.human_attribute_name(:delivery_date)
+      %th= Order.human_attribute_name(:delivery_time)
       %th 合計金額
   %tbody
     - @orders.each do |order|
@@ -15,5 +17,7 @@
         %td= link_to order.user.name, users_order_path(order)
         %td= order.user.email
         %td= l(order.created_at, format: :long)
-        %td= number_to_currency(order.payment_total)
-= link_to '戻る', admins_books_path, class: 'btn btn-secondary'
+        %td= l(order.delivery_date, format: :long)
+        %td= order.delivery_time
+        %td= number_to_currency(order.total_amount)
+= link_to '戻る', root_path, class: 'btn btn-secondary'
