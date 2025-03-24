@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create destroy]
 
   namespace :users do
-    resources :orders, only: %i[create]
+    resources :orders, only: %i[create index show]
   end
 
   namespace :admins do

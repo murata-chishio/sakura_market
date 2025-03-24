@@ -7,6 +7,8 @@ class Order < ApplicationRecord
   validates :delivery_time, presence: true, inclusion: { in: %w[8-12 12-14 14-16 16-18 18-20 20-21] }
   validate :validate_delivery_date_within_valid_range
 
+  scope :default_order, -> { order(:created_at, :id) }
+
   def self.build_from_cart(user, cart)
     order = user.orders.build
     cart.cart_items.each do |cart_item|
