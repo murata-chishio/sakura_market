@@ -31,3 +31,5 @@ ja:
         created_at: '購入日時'
         delivery_date: '配送日'
         delivery_time: '配送時刻'
+      order_item:
+        quantity: '個数'

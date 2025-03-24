@@ -13,7 +13,7 @@ class Users::OrdersController < Users::ApplicationController
   end
 
   def index
-    @orders = Order.default_order.page(params[:page])
+    @orders = Order.preload(:user).default_order.page(params[:page])
   end
 
   def show
