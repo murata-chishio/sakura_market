@@ -13,22 +13,21 @@ RSpec.describe '購入履歴', type: :system do
   end
 
   describe '履歴の一覧' do
-
     before do
-      product = create(:product, name: 'キャベツ', price: 2000)
-      order = create(:order,
-                    user:,
-                    created_at: '2025-03-25 12:00',
-                    delivery_date: Order.calculate_business_days(5),
-                    delivery_time: '8-12',
-                    total_amount: '10000`')
+      create(:product, name: 'キャベツ', price: 2000)
+      create(:order,
+             user:,
+             created_at: '2025-03-25 12:00',
+             delivery_date: Order.calculate_business_days(5),
+             delivery_time: '8-12',
+             total_amount: '10000`')
     end
 
     it '一覧に情報が表示されている' do
       visit users_orders_path
       expect(page).to have_content '佐藤 太郎'
       expect(page).to have_content 'user@example.com'
-      expect(page).to have_content Order.calculate_business_days(5).strftime("%Y年%m月%d日")
+      expect(page).to have_content Order.calculate_business_days(5).strftime('%Y年%m月%d日')
       expect(page).to have_content '8-12'
       expect(page).to have_content '10,000'
     end
