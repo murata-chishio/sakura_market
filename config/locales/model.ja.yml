@@ -27,3 +27,6 @@ ja:
         shipping_fee: '送料'
         tax_amount: '税'
         payment_total: '支払いの合計'
+      order:
+        delivery_date: '配送日'
+        delivery_time: '配送時間'

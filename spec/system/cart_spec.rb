@@ -21,7 +21,7 @@ RSpec.describe 'カートの機能', type: :system do
 
     it '商品をカートに入れることができる' do
       visit product_path(product)
-      fill_in '個数', with: '2'
+      fill_in '個数', with: '3'
       click_button 'カートに追加'
       expect(page).to have_content 'カートに追加しました。'
       visit cart_path
@@ -61,6 +61,8 @@ RSpec.describe 'カートの機能', type: :system do
       visit cart_path
       expect(page).to have_content 'キャベツ'
       expect(page).to have_content '4,400'
+      fill_in '配送日', with: Order.calculate_business_days(3)
+      select '8-12', from: '配送時間'
       click_button '購入'
       expect(page).to have_content '購入しました。'
     end

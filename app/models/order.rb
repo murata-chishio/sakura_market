@@ -5,7 +5,7 @@ class Order < ApplicationRecord
 
   validates :delivery_date, presence: true
   validates :delivery_time, presence: true, inclusion: { in: %w[8-12 12-14 14-16 16-18 18-20 20-21] }
-  validate :delivery_date_within_valid_range
+  validate :validate_delivery_date_within_valid_range
 
   def self.build_from_cart(user, cart)
     order = user.orders.build
@@ -21,7 +21,7 @@ class Order < ApplicationRecord
 
     while business_days < days
       date += 1.day
-      next if date.saturday? || date.sunday? || HOLIDAYS.include?(date)
+      next if date.saturday? || date.sunday?
 
       business_days += 1
     end
@@ -29,12 +29,12 @@ class Order < ApplicationRecord
     date
   end
 
-  def delivery_date_within_valid_range
+  def validate_delivery_date_within_valid_range
     min_date = self.class.calculate_business_days(3)
     max_date = self.class.calculate_business_days(14)
 
-    unless delivery_date&.delivery_date&.between?(min_date, max_date)
-      errors.add(:delivery_date, "must be between #{min_date.strftime('%Y-%m-%d')} and #{max_date.strftime('%Y-%m-%d')}")
+    unless delivery_date&.between?(min_date, max_date)
+      errors.add(:delivery_date, :must_be_within_valid_range)
     end
   end
 end

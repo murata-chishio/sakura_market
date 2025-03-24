@@ -49,8 +49,12 @@
           %p 購入するには、名前と住所を登録する必要があります
         - else
           = form_with(url: users_orders_path, local: true) do |f|
-            = f.date_field :delivery_date, min: @min_delivery_date, max: @max_delivery_date
-            = f.select :delivery_time, ['8-12', '12-14', '14-16', '16-18', '18-20', '20-21']
+            .form-group
+              = f.label :delivery_date, '配送日'
+              = f.date_field :delivery_date, min: @min_delivery_date, max: @max_delivery_date
+            .form-group
+              = f.label :delivery_time, '配送時間'
+              = f.select :delivery_time, ['8-12', '12-14', '14-16', '16-18', '18-20', '20-21']
             = f.submit '購入する', class: 'btn btn-primary'
 
   - else

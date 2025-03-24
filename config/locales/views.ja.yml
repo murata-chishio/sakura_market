@@ -5,3 +5,10 @@ ja:
   simple_form:
     error_notification:
       default_message: "以下の問題を確認してください"
+  activerecord:
+    errors:
+      models:
+        order:
+          attributes:
+            delivery_date:
+              must_be_within_valid_range: "は有効な範囲内である必要があります"
