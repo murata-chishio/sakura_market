@@ -7,8 +7,8 @@ RSpec.describe Cart, type: :model do
     before do
       product1 = create(:product, price: 1000)
       product2 = create(:product, price: 2000)
-      create(:cart_item, cart:, product: product1)
-      create(:cart_item, cart:, product: product2)
+      create(:cart_item, cart:, product: product1, quantity: 1)
+      create(:cart_item, cart:, product: product2, quantity: 1)
     end
 
     it '商品の合計金額(税抜)が表示されること' do
@@ -37,8 +37,8 @@ RSpec.describe Cart, type: :model do
     before do
       product1 = create(:product)
       product2 = create(:product)
-      create(:cart_item, cart:, product: product1)
-      create(:cart_item, cart:, product: product2)
+      create(:cart_item, cart:, product: product1, quantity: 1)
+      create(:cart_item, cart:, product: product2, quantity: 1)
     end
 
     it '送料が表示されていること' do
@@ -52,8 +52,8 @@ RSpec.describe Cart, type: :model do
     before do
       product1 = create(:product, price: 1000)
       product2 = create(:product, price: 2000)
-      create(:cart_item, cart:, product: product1)
-      create(:cart_item, cart:, product: product2)
+      create(:cart_item, cart:, product: product1, quantity: 1)
+      create(:cart_item, cart:, product: product2, quantity: 1)
     end
 
     it '商品と代引き手数料と送料の税が表示されていること' do
@@ -67,8 +67,8 @@ RSpec.describe Cart, type: :model do
     before do
       product1 = create(:product, price: 1000)
       product2 = create(:product, price: 2000)
-      create(:cart_item, cart:, product: product1)
-      create(:cart_item, cart:, product: product2)
+      create(:cart_item, cart:, product: product1, quantity: 1)
+      create(:cart_item, cart:, product: product2, quantity: 1)
     end
 
     it '支払いの合計が表示されていること' do
